@@ -4,17 +4,17 @@
 
          <div class="flex flex-col gap-6">
             <div class="flex flex-col">
-               <label for="emailInput">
+               <label>
                   Titre de la notification
                </label>
-               <input v-model="email" class="standard-input" placeholder="Message">
+               <input v-model="title" class="standard-input" placeholder="Entrer un titre">
             </div>
 
             <div class="flex flex-col">
-               <label for="nameInput">
+               <label>
                   Texte de la notification
                </label>
-               <input v-model="text" class="standard-input" placeholder="Hello">
+               <input v-model="text" class="standard-input" placeholder="Entrer un message">
             </div>
          </div>
 
@@ -34,11 +34,12 @@ import { ref } from "vue"
 import { app } from '/src/client-app.js'
 
 
-const text = ref('MESSAGE DE TEST')
+const title = ref('MESSAGE')
+const text = ref('Hello!')
 
 const push = async () => {
    if ('Notification' in window) {
-      app.service('notification').pushNotification(1, { a: 123, b: 456, title: "MON TITRE", text: text.value })
+      app.service('notification').pushNotification(1, { a: 123, b: 456, title: title.value, text: text.value })
    }
 }
 </script>
