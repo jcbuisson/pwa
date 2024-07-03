@@ -1,0 +1,16 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model user {
+  id                 Int       @id @default(autoincrement())
+  created_at         DateTime  @default(now()) @db.Timestamptz(6)
+  alias              String
+  subscription_list  String    @default("[]")   // push notification 'adresses', comma-separated
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
