@@ -8,6 +8,12 @@
             </button>
          </div>
 
+         <div class="px-6 pt-4 pb-2">
+            <button type="button" @click="unsubscribe" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+               Désinscrire
+            </button>
+         </div>
+
       </div>
    </div>
 </template>
@@ -23,6 +29,13 @@ const subscribe = async () => {
    if ('Notification' in window) {
       const subscription = await getWebPushSubscription()
       app.service('notification').addSubscription(1, subscription)
+   }
+}
+
+const unsubscribe = async () => {
+   if ('Notification' in window) {
+      const subscription = await getWebPushSubscription()
+      app.service('notification').deleteSubscription(1, subscription)
    }
 }
 
