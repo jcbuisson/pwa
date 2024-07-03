@@ -35,6 +35,18 @@ export default function (app) {
          })
       },
 
+      // remove all subscriptions with the same endpoint as `subscription`
+      deleteSubscription: async (userId, subscription) => {
+         // get user's subscription list
+         const user = await app.service('user').findUnique({ where: { id: userId }})
+         const subscriptionList = JSON.parse(user.subscription_list).filter(s => s.endpoint !== subscription.endpoint)
+         // console.log('subscriptionList', subscriptionList)
+         app.service('user').update({
+            where: { id: userId },
+            data: { subscription_list: JSON.stringify(subscriptionList) }
+         })
+      },
+
       // send a notification to all devices connected with `userId`
       pushNotification: async (userId, payload) => {
          const user = await app.service('user').findUnique({ where: { id: userId }})
