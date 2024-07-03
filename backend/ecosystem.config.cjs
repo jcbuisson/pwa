@@ -9,7 +9,7 @@ module.exports = {
       // //////////////////////////        PROD      //////////////////////////  
       {
          name: "pwa",
-         script: "./src/index.js",
+         script: "./src/app.js",
          watch: false,
 
          env: {
