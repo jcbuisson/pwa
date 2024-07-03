@@ -1,4 +1,7 @@
 
+frontend-appli : mini application PWA qui affiche des notifications
+frontend : interface qui gère l'installation de la PWA avec une URL et qui pousse des notifications vers la PWA
+
 # Test en dev
 
 Lancer le backend
@@ -7,14 +10,28 @@ cd backend
 npm run dev
 ```
 
-Lancer le frontend
+Lancer le frontend de la PWA :
+Tuer d'abord tous les services workers en cours avec les devtools
 ```
-cd frontend
+cd frontend-appli
 npm run build
 cp vite.config.js dist/  # pour avoir le proxy vers le backend
 cd dist
 npx vite
 ```
+
+Lancer le frontend de l'installer :
+```
+cd frontend
+npm run dev
+```
+
+
+# Vapid keys
+
+(créées par scripts/creat-vapid-keys.js) :
+Public Key: BPZBVrSamWH-zemsmikADlLtoZ-jte7Mi_6pth1hqR3yi2Z00xXqMwyQrmXMHTDHs_SxHw5WAM8R0SWvkSIGcSE
+Private Key: SmANc36Jhm7qby4D7Hri444lDF0ULjSvJeEGMpNo_As
 
 
 # PWA manifest
@@ -40,10 +57,6 @@ en utilisant la subscription qui a été mémorisée pour lui
 - la librairie 'web-push' simplifie l'implémentation du protocole; le cryptage s'appuie sur des 'vapid-keys'.
 Les mêmes 'vapid-keys' sont utilisées pour le serveur et pour tous les clients.
 - la demande d'autorisation d'utiliser les notifications est faite dans `main.js`
-
-Vapid keys (créées par scripts/creat-vapid-keys.js) :
-Public Key: BPZBVrSamWH-zemsmikADlLtoZ-jte7Mi_6pth1hqR3yi2Z00xXqMwyQrmXMHTDHs_SxHw5WAM8R0SWvkSIGcSE
-Private Key: SmANc36Jhm7qby4D7Hri444lDF0ULjSvJeEGMpNo_As
 
 
 # PWA explicit install

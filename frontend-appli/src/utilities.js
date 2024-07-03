@@ -12,9 +12,7 @@ export function urlB64ToUint8Array(base64String) {
 
 export async function getWebPushSubscription() {
    try {
-      const register = await navigator.serviceWorker.register('/sw.js', {
-         scope: '/'
-      })
+      const register = await navigator.serviceWorker.register('/sw.js', { scope: '/' })
       console.log('register', register)
       const vapidPublicKey = import.meta.env.VITE_APP_VAPID_PUBLIC_KEY
       console.log('vapidPublicKey', vapidPublicKey)
