@@ -20,25 +20,25 @@ export default defineConfig(({ command, mode }) => {
             includeAssets: ["/favicon.png"],
             strategies: "injectManifest",
             manifest: {
-               name: "Notifications",
-               short_name: "Notifs",
+               name: "PWA",
+               short_name: "PWA",
                theme_color: "#ffffff",
                start_url: "/",
                display: "standalone",
                background_color: "#ffffff",
                icons: [
                   {
-                     src: "img/icons/logo-192x192.png",
+                     src: "img/icons/pwa-192x192.png",
                      sizes: "192x192",
                      type: "image/png",
                   },
                   {
-                     src: "img/icons/logo-512x512.png",
+                     src: "img/icons/pwa-512x512.png",
                      sizes: "512x512",
                      type: "image/png",
                   },
                   {
-                     src: "img/icons/logo-512x512.png",
+                     src: "img/icons/pwa-512x512.png",
                      sizes: "512x512",
                      type: "image/png",
                      purpose: "any maskable",
