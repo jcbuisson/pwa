@@ -186,7 +186,7 @@ const url = computed(() => `https://pwa-appli.jcbuisson.dev/${user.value?.id || 
 
 const push = async () => {
    if ('Notification' in window) {
-      app.service('notification').pushNotification(user.id, { a: 123, b: 456, title: title.value, text: text.value })
+      app.service('notification').pushNotification(user.value.id, { title: title.value, text: text.value })
    }
 }
 
