@@ -51,7 +51,7 @@
                   <span class="w-full text-center text-3xl">2</span>
                </span>
                <div class="inline-block" style="color: #353535; margin-left: 20px;">
-                  Installez l'application pour cet utilisateur
+                  Installez l'application pour <span class="text-red-300">{{ user?.alias }}</span>
                </div>
             </div>
             <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
