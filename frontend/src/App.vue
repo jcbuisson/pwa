@@ -11,7 +11,7 @@
                   <span class="w-full text-center text-3xl">1</span>
                </span>
                <div class="inline-block" style="color: #353535; margin-left: 20px;">
-                  Installez la PWA comme une application
+                  Installez la <span><img class="h-12 w-12 inline-block" src="/img/icons/pwa-192x192.png" /></span> comme une application
                </div>
             </div>
             <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
@@ -26,6 +26,18 @@
                      - Mettez l'application sur l'écran d'accueil
                   </li>
                </ul>
+               <div class="flex">
+                  <img src="/img/install-pwa-chrome.png" class="h-24" />
+                  <img src="/img/install-pwa-safari.png" class="h-24" />
+               </div>
+               <div class="flex">
+                  <img src="/img/install-desktop-android.png" class="h-24" />
+                  <img src="/img/install-desktop-safari.png" class="h-12" />
+               </div>
+               <div class="flex">
+                  <img src="/img/install-app-android.png" class="h-24" />
+                  <img src="/img/install-app-ios.png" class="h-24" />
+               </div>
             </div>
          </div>
          <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
@@ -51,7 +63,7 @@
                   <span class="w-full text-center text-3xl">3</span>
                </span>
                <div class="inline-block" style="color: #353535; margin-left: 20px;">
-                  Envoyez des notifications
+                  Envoyez des notifications !
                </div>
             </div>
             <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
@@ -71,8 +83,8 @@
                   </div>
                </div>
 
-               <div class="justify-center flex my-8">
-                  <button class="primary-btn" @click="push">
+               <div class="justify-center flex">
+                  <button class="primary-btn mt-4 mb-1" @click="push">
                      Envoyer notification
                   </button>
                </div>
