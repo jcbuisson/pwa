@@ -1,6 +1,104 @@
 <template>
-   <div class="m-2">
-      <div class="max-w-sm rounded overflow-hidden shadow-lg">
+
+   <main class="flex container max-w-7xl p-2" style="background-color: #EFF4FD; color: #353535;">
+
+      <div class="w-0 md:w-64"></div>
+
+      <div>
+         <div>
+            <div class="bg-white flex w-full md:max-w-fit" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
+               <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
+                  <span class="w-full text-center text-3xl">1</span>
+               </span>
+               <div class="inline-block" style="color: #353535; margin-left: 20px;">
+                  Installez la PWA comme une application
+               </div>
+            </div>
+            <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
+               <ul>
+                  <li>- Sur PC/windows, MacOS, iOS, Android, ouvrez ce lien dans un navigateur :
+                     <a class="link hover:underline" href="https://pwa-appli.jcbuisson.dev">https://pwa-appli.jcbuisson.dev</a>
+                  </li>
+                  <li>
+                     - Faites-le sur autant de devices que voulu : PC/windows, Mac, iOS, Android
+                  </li>
+                  <li>
+                     - Mettez l'application sur l'écran d'accueil
+                  </li>
+               </ul>
+            </div>
+         </div>
+         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
+
+         <div>
+            <div class="bg-white flex" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
+               <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
+                  <span class="w-full text-center text-3xl">2</span>
+               </span>
+               <div class="inline-block" style="color: #353535; margin-left: 20px;">
+                  Autorisez les notifications
+               </div>
+            </div>
+            <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
+               Bla-bla
+            </div>
+         </div>
+         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
+
+         <div>
+            <div class="bg-white flex" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
+               <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
+                  <span class="w-full text-center text-3xl">3</span>
+               </span>
+               <div class="inline-block" style="color: #353535; margin-left: 20px;">
+                  Envoyez des notifications
+               </div>
+            </div>
+            <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
+               <div class="flex flex-col gap-6">
+                  <div class="flex flex-col">
+                     <label>
+                        Titre de la notification
+                     </label>
+                     <input v-model="title" class="standard-input" placeholder="Entrer un titre">
+                  </div>
+
+                  <div class="flex flex-col">
+                     <label>
+                        Texte de la notification
+                     </label>
+                     <input v-model="text" class="standard-input" placeholder="Entrer un message">
+                  </div>
+               </div>
+
+               <div class="justify-center flex my-8">
+                  <button class="primary-btn" @click="push">
+                     Envoyer notification
+                  </button>
+               </div>
+            </div>
+         </div>
+         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
+
+         <div>
+            <div class="bg-white flex" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
+               <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
+                  <span class="w-full text-center text-3xl">4</span>
+               </span>
+               <div class="inline-block" style="color: #353535; margin-left: 20px;">
+                  Déclenchez une mise à jour de l'application
+               </div>
+            </div>
+            <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
+               Bla-bla
+            </div>
+         </div>
+         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
+
+      </div>
+
+
+      <!-- <section class="w-full flex justify-end gap-6">
 
          <div class="flex flex-col gap-6">
             <div class="flex flex-col">
@@ -24,8 +122,9 @@
             </button>
          </div>
 
-      </div>
-   </div>
+      </section> -->
+
+   </main>
 </template>
 
 <script setup>
