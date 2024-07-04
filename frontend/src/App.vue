@@ -167,6 +167,7 @@ ul.custom-colored-dots2 > li::marker {
 </style>
 
 <script setup>
+import { useRegisterSW } from 'virtual:pwa-register/vue'
 import { ref, computed } from "vue"
 
 import { app } from '/src/client-app.js'
@@ -188,4 +189,27 @@ const push = async () => {
       app.service('notification').pushNotification(user.id, { a: 123, b: 456, title: title.value, text: text.value })
    }
 }
+
+/////////////////      AUTOMATIC VERSION UPDATE     ////////////////
+
+// POSSIBLE DE SIMPLIFIER AVEC registerType: 'autoUpdate'
+// VOIR : https://vite-pwa-org.netlify.app/guide/auto-update.html
+
+const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
+   immediate: true,
+   onRegistered(r) {
+      console.log(`SW onRegistered: ${r}`)
+      r && setInterval(async() => {
+         console.log('Checking for sw update')
+         await r.update()
+         console.log('needRefresh', needRefresh.value)
+         if (needRefresh.value) {
+            // update app
+            console.log('updating app..!')
+            updateServiceWorker()
+         }
+
+      }, 20000 /* check every 20s */)
+   },
+})
 </script>
