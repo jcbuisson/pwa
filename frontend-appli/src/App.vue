@@ -2,6 +2,8 @@
    <div class="m-2">
       <div class="max-w-sm rounded overflow-hidden shadow-lg">
 
+         <h1>Hello {{ userId }}</h1>
+
          <div class="px-6 pt-4 pb-2">
             <button type="button" @click="subscribe" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                Souscrire
@@ -24,10 +26,11 @@ import { useRegisterSW } from 'virtual:pwa-register/vue'
 import { getWebPushSubscription } from '/src/utilities.js'
 import { app } from '/src/client-app.js'
 
+const userId = parseInt(window.location.pathname.substring(1))
+
 
 const subscribe = async () => {
    if ('Notification' in window) {
-      const userId = parseInt(window.location.pathname.substring(1))
       console.log('userId', userId)
       const subscription = await getWebPushSubscription()
       app.service('notification').addSubscription(userId, subscription)
@@ -36,7 +39,6 @@ const subscribe = async () => {
 
 const unsubscribe = async () => {
    if ('Notification' in window) {
-      const userId = parseInt(window.location.pathname.substring(1))
       const subscription = await getWebPushSubscription()
       app.service('notification').deleteSubscription(userId, subscription)
    }
