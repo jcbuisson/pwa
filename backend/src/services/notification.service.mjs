@@ -12,6 +12,11 @@ export default function (app) {
 
    app.createService('notification', {
 
+      createUser: async (alias) => {
+         const user = await app.service('user').create({ data: { alias }})
+         return user
+      },
+
       // add a new subscription (= notification recipient address) for `userId`, or update an existing one
       addSubscription: async (userId, subscription) => {
          // get user's subscription list

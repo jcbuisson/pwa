@@ -27,15 +27,18 @@ import { app } from '/src/client-app.js'
 
 const subscribe = async () => {
    if ('Notification' in window) {
+      const userId = window.location.pathname.substring(1)
+      console.log('userId', userId)
       const subscription = await getWebPushSubscription()
-      app.service('notification').addSubscription(1, subscription)
+      app.service('notification').addSubscription(userId, subscription)
    }
 }
 
 const unsubscribe = async () => {
    if ('Notification' in window) {
+      const userId = window.location.pathname.substring(1)
       const subscription = await getWebPushSubscription()
-      app.service('notification').deleteSubscription(1, subscription)
+      app.service('notification').deleteSubscription(userId, subscription)
    }
 }
 
