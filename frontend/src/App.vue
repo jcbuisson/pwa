@@ -11,10 +11,11 @@
          <h1 class="mt-8 mb-6">Les applications <span><img class="h-16 w-16 inline-block" src="/img/icons/pwa-192x192.png" /></span></h1>
 
          <ul class="list-disc list-inside custom-colored-dots2">
-            <li>accessibles via un navigateur web : diffusables en un clic via une url</li>
+            <li>accessibles via un navigateur web et diffusables en un clic via une url</li>
             <li>faciles à mettre à jour</li>
-            <li>reçoivent des notifications, peuvent être sur les écrans d'accueil</li>
-            <li>s'installent aussi depuis les stores</li>
+            <li>utilisables sur PC ou mobiles ou tablettes de tous types</li>
+            <li>s'installent sur les écrans d'accueil et reçoivent des notifications</li>
+            <li>peuvent s'installer aussi depuis les stores</li>
          </ul>
 
          <div class="mt-8">
@@ -36,8 +37,9 @@
                   </div>
                </div>
 
-               <div class="justify-center flex">
-                  <button class="primary-btn mt-4 mb-1" @click="createUser">
+               <div class="justify-center flex my-2">
+                  <button class="mybtn bg-blue-900 hover:bg-blue-700 disabled:bg-blue-700 disabled:cursor-not-allowed text-white py-2 px-12"
+                        :disabled="!alias" @click="createUser">
                      Créer utilisateur
                   </button>
                </div>
@@ -51,21 +53,38 @@
                   <span class="w-full text-center text-3xl">2</span>
                </span>
                <div class="inline-block" style="color: #353535; margin-left: 20px;">
-                  Installez l'application pour <span class="text-red-300">{{ user?.alias }}</span>
+                  Ouvrez l'application pour <span class="text-red-300">{{ user?.alias }}</span> dans un navigateur mobile, PC ou Mac
                </div>
             </div>
             <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
-               <ul class="list-disc list-inside custom-colored-dots">
-                  <li>
-                     Sur PC/windows, MacOS, iOS, Android, ouvrez ce lien dans un navigateur :
-                     <p class="ml-4"><a class="link hover:underline" :href="url">{{ url }}</a></p>
-                  </li>
-                  <li class="mt-1">Mettez l'application sur l'écran d'accueil
+               <p>Sur PC/windows, MacOS, iOS, Android, ouvrez ce lien dans un navigateur :</p>
+
+               <p class="ml-4">
+                  <a class="text-blue-500 hover:underline" :href="url" target="_blank">
+                     {{ url }}
+                  </a>
+               </p>
+
+            </div>
+         </div>
+         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
+
+         <div v-if="user">
+            <div class="bg-white flex w-full md:max-w-fit" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
+               <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
+                  <span class="w-full text-center text-3xl">3</span>
+               </span>
+               <div class="inline-block" style="color: #353535; margin-left: 20px;">
+                  Installez l'application sur l'écran d'accueil
+               </div>
+            </div>
+            <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
                      <div role="tablist" class="tabs tabs-bordered">
-                        <a role="tab" class="tab">Chrome</a>
-                        <a role="tab" class="tab tab-active">Safari</a>
-                        <a role="tab" class="tab">iOS</a>
-                        <a role="tab" class="tab">Android</a>
+                        <a class="tab tab-active">Android</a>
+                        <a class="tab">iOS</a>
+                        <a class="tab">PC/Chrome</a>
+                        <a class="tab">PC/Firefox</a>
+                        <a class="tab">Mac/Safari</a>
                      </div>
 
                      <div class="flex">
@@ -80,8 +99,6 @@
                         <img src="/img/install-app-android.png" class="h-24" />
                         <img src="/img/install-app-ios.png" class="h-24" />
                      </div> -->
-                  </li>
-               </ul>
             </div>
          </div>
          <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
@@ -89,7 +106,7 @@
          <div v-if="user">
             <div class="bg-white flex" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
                <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
-                  <span class="w-full text-center text-3xl">3</span>
+                  <span class="w-full text-center text-3xl">4</span>
                </span>
                <div class="inline-block" style="color: #353535; margin-left: 20px;">
                   Autorisez les notifications
@@ -104,7 +121,7 @@
          <div v-if="user">
             <div class="bg-white flex" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
                <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
-                  <span class="w-full text-center text-3xl">4</span>
+                  <span class="w-full text-center text-3xl">5</span>
                </span>
                <div class="inline-block" style="color: #353535; margin-left: 20px;">
                   Envoyez des notifications !
@@ -127,8 +144,9 @@
                   </div>
                </div>
 
-               <div class="justify-center flex">
-                  <button class="primary-btn mt-4 mb-1" @click="push">
+               <div class="justify-center flex mt-4 mb-1">
+                  <button class="bg-blue-900 hover:bg-blue-700 disabled:bg-blue-700 disabled:cursor-not-allowed text-white py-2 px-12"
+                        @click="push">
                      Envoyer notification
                   </button>
                </div>
@@ -139,7 +157,7 @@
          <div v-if="user">
             <div class="bg-white flex" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
                <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
-                  <span class="w-full text-center text-3xl">5</span>
+                  <span class="w-full text-center text-3xl">6</span>
                </span>
                <div class="inline-block" style="color: #353535; margin-left: 20px;">
                   Déclenchez une mise à jour de l'application
@@ -163,7 +181,6 @@ ul.custom-colored-dots > li::marker {
 ul.custom-colored-dots2 > li::marker {
    color: #6AB3F9;
 }
-
 </style>
 
 <script setup>
