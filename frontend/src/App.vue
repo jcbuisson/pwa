@@ -13,8 +13,8 @@
          <ul class="list-disc list-inside custom-colored-dots2">
             <li>accessibles via un navigateur web et diffusables en un clic via une url</li>
             <li>faciles à mettre à jour</li>
-            <li>utilisables sur PC ou mobiles ou tablettes de tous types</li>
-            <li>s'installent sur les écrans d'accueil et reçoivent des notifications</li>
+            <li>utilisables sur PC, mobiles ou tablettes de tous types</li>
+            <li>s'installent sur les écrans d'accueil comme des applications et reçoivent des notifications</li>
             <li>peuvent s'installer aussi depuis les stores</li>
          </ul>
 

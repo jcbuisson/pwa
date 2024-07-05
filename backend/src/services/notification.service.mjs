@@ -51,6 +51,7 @@ export default function (app) {
       // send a notification to all devices connected with `userId`
       pushNotification: async (userId, payload) => {
          const user = await app.service('user').findUnique({ where: { id: userId }})
+         if (!user) return
          const subscriptionList = JSON.parse(user.subscription_list)
          subscriptionList.forEach(subscription => {
             webpush.sendNotification(subscription, JSON.stringify(payload))
