@@ -22,25 +22,29 @@
 
 <script setup>
 import { useRegisterSW } from 'virtual:pwa-register/vue'
+import { useSessionStorage } from '@vueuse/core'
+
 
 import { getWebPushSubscription } from '/src/utilities.js'
 import { app } from '/src/client-app.js'
 
-const userId = parseInt(window.location.pathname.substring(1))
+// `userId` is saved in sessionStorage on first run in browser, because PWA on home screen doesn't see/maintain window.location.pathname
+const userId = useSessionStorage('userId', parseInt(window.location.pathname.substring(1)), { mergeDefaults: true })
 
 
 const subscribe = async () => {
    if ('Notification' in window) {
-      console.log('userId', userId)
       const subscription = await getWebPushSubscription()
-      app.service('notification').addSubscription(userId, subscription)
+      console.log('userId', userId)
+      app.service('notification').addSubscription(userId.value, subscription)
    }
 }
 
 const unsubscribe = async () => {
    if ('Notification' in window) {
       const subscription = await getWebPushSubscription()
-      app.service('notification').deleteSubscription(userId, subscription)
+      console.log('userId', userId)
+      app.service('notification').deleteSubscription(userId.value, subscription)
    }
 }
 

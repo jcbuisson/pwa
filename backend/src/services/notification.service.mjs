@@ -22,14 +22,11 @@ export default function (app) {
          // get user's subscription list
          const user = await app.service('user').findUnique({ where: { id: userId }})
          const subscriptionList = JSON.parse(user.subscription_list)
-         // console.log('subscriptionList', subscriptionList)
          // look for an existing substription with the same endpoint as `subscription`
          const existingSubscription = subscriptionList.find(s => s.endpoint == subscription.endpoint)
-         // console.log('existingSubscription', existingSubscription)
          if (existingSubscription) {
             // update existing subscription
             Object.assign(existingSubscription, subscription)
-            console.log('existingSubscription+', existingSubscription)
          } else {
             // add new subscription
             subscriptionList.push(subscription)
@@ -45,7 +42,6 @@ export default function (app) {
          // get user's subscription list
          const user = await app.service('user').findUnique({ where: { id: userId }})
          const subscriptionList = JSON.parse(user.subscription_list).filter(s => s.endpoint !== subscription.endpoint)
-         // console.log('subscriptionList', subscriptionList)
          app.service('user').update({
             where: { id: userId },
             data: { subscription_list: JSON.stringify(subscriptionList) }
@@ -56,7 +52,6 @@ export default function (app) {
       pushNotification: async (userId, payload) => {
          const user = await app.service('user').findUnique({ where: { id: userId }})
          const subscriptionList = JSON.parse(user.subscription_list)
-         console.log('subscriptionList', subscriptionList)
          subscriptionList.forEach(subscription => {
             webpush.sendNotification(subscription, JSON.stringify(payload))
          })

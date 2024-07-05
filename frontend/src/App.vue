@@ -45,10 +45,11 @@
                </div>
             </div>
          </div>
-         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
 
          <div v-if="user">
-            <div class="bg-white flex w-full md:max-w-fit" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
+            <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
+
+            <div class="bg-white flex w-full" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
                <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
                   <span class="w-full text-center text-3xl">2</span>
                </span>
@@ -57,20 +58,21 @@
                </div>
             </div>
             <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
-               <p>Sur PC/windows, MacOS, iOS, Android, ouvrez ce lien dans un navigateur :</p>
+               <p>Sur mobile ou tablette Android ou iOS, sur PC/windows ou MacOS, ouvrez ce lien dans un navigateur :</p>
 
-               <p class="ml-4">
-                  <a class="text-blue-500 hover:underline" :href="url" target="_blank">
+               <div class="flex justify-center w-full my-4">
+                  <a class="text-blue-500 hover:underline text-xl" :href="url" target="_blank">
                      {{ url }}
                   </a>
-               </p>
+               </div>
 
             </div>
+
+            <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
          </div>
-         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
 
          <div v-if="user">
-            <div class="bg-white flex w-full md:max-w-fit" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
+            <div class="bg-white flex w-full" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
                <span class="w-12 h-12 rounded-full flex items-center" style="background-color: #FEECDE; color: #FB9B4D;">
                   <span class="w-full text-center text-3xl">3</span>
                </span>
@@ -80,28 +82,33 @@
             </div>
             <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
                      <div role="tablist" class="tabs tabs-bordered">
-                        <a class="tab tab-active">Android</a>
-                        <a class="tab">iOS</a>
-                        <a class="tab">PC/Chrome</a>
-                        <a class="tab">PC/Firefox</a>
-                        <a class="tab">Mac/Safari</a>
+                        <div class='tab' :class="{ 'tab-active' : os === 'android' }" @click="os = 'android'">Android</div>
+                        <div class='tab' :class="{ 'tab-active' : os === 'ios' }" @click="os = 'ios'">iOS</div>
+                        <a class='tab' :class="{ 'tab-active' : os === 'pc-chrome' }" @click="os = 'pc-chrome'">PC/Chrome</a>
+                        <a class='tab' :class="{ 'tab-active' : os === 'pc-firefox' }" @click="os = 'pc-firefox'">PC/Firefox</a>
+                        <a class='tab' :class="{ 'tab-active' : os === 'mac-safari' }" @click="os = 'mac-safari'">Mac/Safari</a>
                      </div>
 
-                     <div class="flex">
-                        <img src="/img/install-pwa-chrome.png" class="h-24" />
-                        <img src="/img/install-pwa-safari.png" class="h-24" />
-                     </div>
-                     <!-- <div class="flex">
+                     <div class="flex" v-if="os === 'android'">
                         <img src="/img/install-desktop-android.png" class="h-24" />
-                        <img src="/img/install-desktop-safari.png" class="h-12" />
-                     </div>
-                     <div class="flex">
                         <img src="/img/install-app-android.png" class="h-24" />
-                        <img src="/img/install-app-ios.png" class="h-24" />
-                     </div> -->
+                     </div>
+                     <div class="flex" v-if="os === 'ios'">
+                        <img src="/img/install-pwa-safari.png" class="h-24" />
+                        <img src="/img/install-desktop-ios.png" class="h-12" />
+                        <img src="/img/install-desktop2-ios.png" class="h-24" />
+                     </div>
+                     <div class="flex" v-if="os === 'pc-chrome'">
+                        <img src="/img/install-pwa-chrome.png" class="h-24" />
+                     </div>
+                     <div class="flex" v-if="os === 'pc-firefox'">
+                     </div>
+                     <div class="flex" v-if="os === 'mac-safari'">
+                     </div>
             </div>
+
+            <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
          </div>
-         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
 
          <div v-if="user">
             <div class="bg-white flex" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
@@ -113,10 +120,13 @@
                </div>
             </div>
             <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
-               Bla-bla
+               <div class="flex">
+                  <img src="/img/subscribe.png" class="h-24" />
+               </div>
             </div>
+
+            <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
          </div>
-         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
 
          <div v-if="user">
             <div class="bg-white flex" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
@@ -151,8 +161,8 @@
                   </button>
                </div>
             </div>
+            <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
          </div>
-         <div class="" style="margin-left: 40px; height: 50px; border-left: 2px dashed #FBA45D;"></div>
 
          <div v-if="user">
             <div class="bg-white flex" style="padding: 24px 16px; font-size: 1.3rem; align-items: center;">
@@ -164,7 +174,7 @@
                </div>
             </div>
             <div class="" style="min-height: 50px; background-color: #FEECDE; color: #353535; padding: 16px;">
-               Bla-bla
+               À suivre...
             </div>
          </div>
 
@@ -190,10 +200,11 @@ import { ref, computed } from "vue"
 import { app } from '/src/client-app.js'
 
 
-const alias = ref('Chris')
+const alias = ref('')
 const title = ref('Info')
 const text = ref('Hello!')
 const user = ref()
+const os = ref('android')
 
 const createUser = async () => {
    user.value = await app.service('notification').createUser(alias.value)
