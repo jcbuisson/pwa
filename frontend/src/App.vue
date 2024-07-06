@@ -2,10 +2,8 @@
 
    <!-- modèle CSS : https://immatriculation.ants.gouv.fr/demarches-en-ligne/vendre-ou-donner-votre-vehicule -->
 
-   <div v-if="needRefresh" class="fixed bottom-0 right-0 m-4 p-4 bg-gray-100 border-solid border-2 z-10">
-      <div class="text-lg mb-2">
-         Une nouvelle version est disponible <a href="#" class="text-blue-500 hover:underline" @click="updateApp">installer</a>
-      </div>
+   <div v-if="needRefresh" class="fixed bottom-0 right-0 m-4 p-4 bg-green-100 border-solid border-2 z-10">
+      Une nouvelle version est disponible <a href="#" class="text-blue-500 hover:underline" @click="updateServiceWorker">installer</a>
    </div>
 
    
@@ -238,7 +236,6 @@ const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
          console.log('Checking for sw update')
          await r.update()
          console.log('needRefresh', needRefresh.value)
-         console.log('offlineReady', offlineReady.value)
          // if (needRefresh.value) {
          //    // update app
          //    console.log('updating app..!')
@@ -248,8 +245,4 @@ const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
       }, 20000 /* check every 20s */)
    },
 })
-
-const updateApp = () => {
-   updateServiceWorker()
-}
 </script>
