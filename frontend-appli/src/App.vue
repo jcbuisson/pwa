@@ -1,4 +1,9 @@
 <template>
+
+   <div v-if="needRefresh" class="fixed bottom-0 right-0 m-4 p-4 bg-green-100 border-solid rounded z-10">
+      Une nouvelle version est disponible <a href="#" class="text-blue-400 hover:underline" @click="updateServiceWorker">installer</a>
+   </div>
+
    <div class="m-2">
       <div class="max-w-sm rounded overflow-hidden shadow-lg">
 
@@ -61,11 +66,11 @@ const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
          console.log('Checking for sw update')
          await r.update()
          console.log('needRefresh', needRefresh.value)
-         if (needRefresh.value) {
-            // update app
-            console.log('updating app..!')
-            updateServiceWorker()
-         }
+         // if (needRefresh.value) {
+         //    // update app
+         //    console.log('updating app..!')
+         //    updateServiceWorker()
+         // }
 
       }, 20000 /* check every 20s */)
    },
