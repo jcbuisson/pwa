@@ -20,8 +20,8 @@ export default defineConfig(({ command, mode }) => {
             includeAssets: ["/favicon.png"],
             strategies: "injectManifest",
             manifest: {
-               name: "PWA",
-               short_name: "PWA",
+               name: "PWAPP",
+               short_name: "PWAPP",
                theme_color: "#ffffff",
                start_url: "/",
                display: "standalone",
