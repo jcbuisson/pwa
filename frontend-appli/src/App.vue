@@ -34,14 +34,14 @@ import { getWebPushSubscription } from '/src/utilities.js'
 import { app } from '/src/client-app.js'
 
 // `userId` is saved in localStorage on first run in browser, because PWA on home screen doesn't see/maintain window.location.pathname
-const userId = useLocalStorage('userId', parseInt(window.location.pathname.substring(1)), { mergeDefaults: true })
+const userId = useLocalStorage('userId', window.location.pathname.substring(1))
 
 
 const subscribe = async () => {
    if ('Notification' in window) {
       const subscription = await getWebPushSubscription()
       console.log('userId', userId.value)
-      app.service('notification').addSubscription(userId.value, subscription)
+      app.service('notification').addSubscription(parseInt(userId.value), subscription)
    }
 }
 
@@ -49,7 +49,7 @@ const unsubscribe = async () => {
    if ('Notification' in window) {
       const subscription = await getWebPushSubscription()
       console.log('userId', userId.value)
-      app.service('notification').deleteSubscription(userId.value, subscription)
+      app.service('notification').deleteSubscription(parseInt(userId.value), subscription)
    }
 }
 
