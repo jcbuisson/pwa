@@ -215,7 +215,7 @@ const createUser = async () => {
    user.value = await app.service('notification').createUser(alias.value)
 }
 
-const url = computed(() => `https://pwapp.jcbuisson.dev/${user.value?.id || ''}?a=1`)
+const url = computed(() => `https://pwapp.jcbuisson.dev/${user.value?.id || ''}`)
 
 const push = async () => {
    if ('Notification' in window) {
