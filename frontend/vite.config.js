@@ -10,10 +10,10 @@ export default defineConfig(({ command, mode }) => {
       plugins: [
          vue({}),
          VitePWA({
+            mode: "development",
             devOptions: {
                enabled: true
             },
-            mode: "development",
             base: "/",
             srcDir: "src",
             filename: "sw.ts",

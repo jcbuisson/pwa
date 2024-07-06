@@ -2,13 +2,20 @@
 
    <!-- modèle CSS : https://immatriculation.ants.gouv.fr/demarches-en-ligne/vendre-ou-donner-votre-vehicule -->
 
+   <div v-if="needRefresh" class="fixed bottom-0 right-0 m-4 p-4 bg-gray-100 border-solid border-2 z-10">
+      <div class="text-lg mb-2">
+         Une nouvelle version est disponible <a href="#" class="text-blue-500 hover:underline" @click="updateApp">installer</a>
+      </div>
+   </div>
+
+   
    <main class="flex container max-w-7xl p-2" style="background-color: #EFF4FD; color: #353535;">
 
       <div class="w-0 md:w-64"></div>
 
       <div>
 
-         <h1 class="mt-8 mb-6">Les applications <span><img class="h-16 w-16 inline-block" src="/img/icons/pwa-192x192.png" /></span></h1>
+         <h1 class="mt-3 md:mt-8 mb-6">Les applications <span><img class="h-16 w-16 inline-block" src="/img/icons/pwa-192x192.png" /></span></h1>
 
          <ul class="list-disc list-inside custom-colored-dots2">
             <li>accessibles via un navigateur web et diffusables en un clic via une url</li>
@@ -231,13 +238,17 @@ const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
          console.log('Checking for sw update')
          await r.update()
          console.log('needRefresh', needRefresh.value)
-         if (needRefresh.value) {
-            // update app
-            console.log('updating app..!')
-            updateServiceWorker()
-         }
+         // if (needRefresh.value) {
+         //    // update app
+         //    console.log('updating app..!')
+         //    updateServiceWorker()
+         // }
 
       }, 20000 /* check every 20s */)
    },
 })
+
+const updateApp = () => {
+   updateServiceWorker()
+}
 </script>
