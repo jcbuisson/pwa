@@ -238,6 +238,7 @@ const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
          console.log('Checking for sw update')
          await r.update()
          console.log('needRefresh', needRefresh.value)
+         console.log('offlineReady', offlineReady.value)
          // if (needRefresh.value) {
          //    // update app
          //    console.log('updating app..!')
