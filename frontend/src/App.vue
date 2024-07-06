@@ -2,7 +2,7 @@
 
    <!-- modèle CSS : https://immatriculation.ants.gouv.fr/demarches-en-ligne/vendre-ou-donner-votre-vehicule -->
 
-   <div v-if="needRefresh" class="fixed bottom-0 right-0 m-4 p-4 bg-green-100 border-solid border-2 z-10">
+   <div v-if="needRefresh" class="fixed bottom-0 right-0 m-4 p-4 bg-green-100 border-solid rounded z-10">
       Une nouvelle version est disponible <a href="#" class="text-blue-500 hover:underline" @click="updateServiceWorker">installer</a>
    </div>
 
