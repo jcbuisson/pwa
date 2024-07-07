@@ -7,17 +7,26 @@
    <div class="m-2">
       <div class="max-w-sm rounded overflow-hidden shadow-lg">
 
-         <h1>Hello {{ userId }}</h1>
+         <div class="flex flex-col gap-6">
+            <div class="flex flex-col">
+               <label>
+                  Nom de l'utilisateur
+               </label>
+               <input v-model="alias" class="standard-input" placeholder="Entrer un nom">
+            </div>
+         </div>
 
-         <div class="px-6 pt-4 pb-2">
-            <button type="button" @click="subscribe" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-               Souscrire
+         <div class="w-full flex justify-center my-4">
+            <button class="mybtn bg-blue-900 hover:bg-blue-700 disabled:bg-blue-200 disabled:cursor-not-allowed text-white py-2 px-12"
+                  :disabled="!alias" @click="subscribe">
+                  Souscrire aux notification
             </button>
          </div>
 
-         <div class="px-6 pt-4 pb-2">
-            <button type="button" @click="unsubscribe" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-               Désinscrire
+         <div class="w-full flex justify-center my-4">
+            <button class="mybtn bg-blue-900 hover:bg-blue-700 disabled:bg-blue-200 disabled:cursor-not-allowed text-white py-2 px-12"
+                  :disabled="!alias" @click="unsubscribe">
+                  Désinscrire des notification
             </button>
          </div>
 
@@ -26,30 +35,32 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useRegisterSW } from 'virtual:pwa-register/vue'
-import { useLocalStorage } from '@vueuse/core'
 
 
 import { getWebPushSubscription } from '/src/utilities.js'
 import { app } from '/src/client-app.js'
 
-// `userId` is saved in localStorage on first run in browser, because PWA on home screen doesn't see/maintain window.location.pathname
-const userId = useLocalStorage('userId', window.location.pathname.substring(1))
-
+const alias = ref()
 
 const subscribe = async () => {
    if ('Notification' in window) {
       const subscription = await getWebPushSubscription()
-      console.log('userId', userId.value)
-      app.service('notification').addSubscription(parseInt(userId.value), subscription)
+      const userList = await app.service('user').findMany({ where: { alias: alias.value }})
+      for (const user of userList) {
+         app.service('notification').addSubscription(user.id, subscription)
+      }
    }
 }
 
 const unsubscribe = async () => {
    if ('Notification' in window) {
       const subscription = await getWebPushSubscription()
-      console.log('userId', userId.value)
-      app.service('notification').deleteSubscription(parseInt(userId.value), subscription)
+      const userList = await app.service('user').findMany({ where: { alias: alias.value }})
+      for (const user of userList) {
+         app.service('notification').deleteSubscription(user.id, subscription)
+      }
    }
 }
 

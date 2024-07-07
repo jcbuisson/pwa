@@ -43,7 +43,7 @@
                </div>
 
                <div class="justify-center flex my-2">
-                  <button class="mybtn bg-blue-900 hover:bg-blue-700 disabled:bg-blue-700 disabled:cursor-not-allowed text-white py-2 px-12"
+                  <button class="mybtn bg-blue-900 hover:bg-blue-700 disabled:bg-blue-200 disabled:cursor-not-allowed text-white py-2 px-12"
                         :disabled="!alias" @click="createUser">
                      Créer utilisateur
                   </button>
